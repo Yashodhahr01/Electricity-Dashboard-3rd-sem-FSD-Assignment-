@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Electricity Dashboard</title>
+
+    <style>
+
+        /* Full video background */
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            overflow: hidden;
+        }
+
+        video.bg-video {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(50%) blur(1px);
+        }
+
+        /* Neon floating glow shapes */
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: rgba(0, 255, 200, 0.25);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 7s infinite ease-in-out alternate;
+        }
+
+        .glow2 {
+            background: rgba(0, 150, 255, 0.25);
+            left: 70%;
+            top: 60%;
+            animation: float2 8s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0,0); }
+            to { transform: translate(50px, -40px); }
+        }
+
+        @keyframes float2 {
+            from { transform: translate(0,0); }
+            to { transform: translate(-40px, 50px); }
+        }
+
+        /* Signup Card - Glass + Neon Border */
+        .container {
+            width: 420px;
+            margin: 80px auto;
+            padding: 30px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(18px);
+            border: 1.5px solid rgba(0,255,255,0.35);
+            box-shadow: 0 0 25px rgba(0,255,255,0.35);
+            animation: rise 0.8s ease-out;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(25px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            color: #eaffff;
+            margin-bottom: 20px;
+            font-size: 26px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px cyan;
+        }
+
+        label {
+            color: #d6f7ff;
+            font-size: 14px;
+            margin-bottom: 6px;
+            display: block;
+            text-shadow: 0 0 5px rgba(0,255,255,0.3);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 8px;
+            color: #eaffff;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 15px;
+            backdrop-filter: blur(4px);
+            transition: 0.25s;
+        }
+
+        input::placeholder {
+            color: #c4e9f0;
+        }
+
+        input:focus {
+            border-color: cyan;
+            box-shadow: 0 0 12px cyan;
+        }
+
+        /* Neon Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(90deg, #00eaff, #00c2ff);
+            color: black;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 20px #00eaff;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            box-shadow: 0 0 28px #00eaff;
+            transform: scale(1.03);
+        }
+
+        .login-link {
+            margin-top: 12px;
+            text-align: center;
+            color: #b7f6ff;
+            font-size: 15px;
+        }
+
+        .login-link a {
+            color: cyan;
+            font-weight: bold;
+            text-shadow: 0 0 10px cyan;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop class="bg-video">
+        <source src="system.mp4" type="video/mp4">
+    </video>
+
+    <!-- Glow Shapes -->
+    <div class="glow"></div>
+    <div class="glow glow2"></div>
+
+    <!-- Signup Card -->
+    <div class="container">
+        <h2>Create Account</h2>
+
+        <form id="signupForm">
+
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+
+            <label>Email ID</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Create password" required>
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirm" placeholder="Re-enter password" required>
+
+            <button type="submit">Sign Up</button>
+
+            <p class="login-link">
+                Already have an account? <a href="login.html">Login</a>
+            </p>
+        </form>
+    </div>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const pass = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    if(pass !== confirm){
+        alert("Passwords do NOT match!");
+        return;
+    }
+
+    alert("Account created successfully!");
+    window.location.href = "login.html";
+});
+</script>
+
+</body>
+</html>

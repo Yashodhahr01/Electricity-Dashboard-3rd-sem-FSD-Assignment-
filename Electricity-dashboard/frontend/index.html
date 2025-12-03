@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electricity Consumption Analytics Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container" id="dashboardRoot">
+
+      <!-- HEADER -->
+      <header>
+        <h1>ElectroSense-Smart Electricity Analytics Dashboard</h1>
+        <p>Track and analyze your power usage and bill.</p>
+
+        <div class="top-actions">
+          <span id="welcomeUser"></span>
+          <button id="darkToggle" class="theme-btn">🌗 Theme</button>
+          <button id="downloadPdf">Download PDF</button>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <!-- FORM SECTION -->
+      <section class="card">
+        <h2>Add Appliance Usage</h2>
+        <form id="usageForm">
+          <div class="form-row">
+            <label>Date</label>
+            <input type="date" id="date" required />
+          </div>
+          <div class="form-row">
+            <label>Appliance</label>
+            <input type="text" id="applianceName" placeholder="e.g., AC, Fan" required />
+          </div>
+          <div class="form-row">
+            <label>Power (Watts)</label>
+            <input type="number" id="watts" required />
+          </div>
+          <div class="form-row">
+            <label>Hours per Day</label>
+            <input type="number" id="hoursPerDay" step="0.1" required />
+          </div>
+          <div class="form-row">
+            <label>Days</label>
+            <input type="number" id="days" required />
+          </div>
+          <div class="form-row">
+            <label>Rate per Unit (₹)</label>
+            <input type="number" id="ratePerUnit" value="8" />
+          </div>
+
+          <button type="submit">Save Usage</button>
+        </form>
+        <p id="formMessage" class="message"></p>
+      </section>
+
+      <!-- SUMMARY SECTION -->
+      <section class="card summary">
+        <h2>Summary</h2>
+
+        <div class="summary-cards">
+          <div class="summary-item">
+            <span>Total Consumption</span>
+            <strong id="totalKWh">0 kWh</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Total Cost</span>
+            <strong id="totalCost">₹0</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Current Month</span>
+            <strong id="currentMonthCost">₹0</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Predicted Bill</span>
+            <strong id="predictedBill">₹0</strong>
+          </div>
+        </div>
+
+        <!-- BUDGET -->
+        <label>Monthly Budget (₹)</label>
+        <input type="number" id="budgetAmount" placeholder="Enter amount" />
+        <button id="saveBudget">Save Budget</button>
+
+        <p id="budgetStatus" class="message"></p>
+      </section>
+
+      <!-- TABLE SECTION -->
+      <section class="card">
+        <h2>All Usage Records</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Appliance</th>
+              <th>Watts</th>
+              <th>Hours/Day</th>
+              <th>Days</th>
+              <th>kWh</th>
+              <th>Cost (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="usageTableBody"></tbody>
+        </table>
+      </section>
+
+      <!-- CHARTS SECTION -->
+      <section class="card">
+        <h2>Analytics</h2>
+
+        <div class="charts">
+          <div class="chart-card">
+            <h3>kWh per Appliance</h3>
+            <canvas id="applianceChart"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h3>Daily Consumption Trend</h3>
+            <canvas id="dateChart"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h3>Monthly Prediction</h3>
+            <canvas id="predictionChart"></canvas>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+/* ---------- GLOBAL ---------- */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0a0f1f, #07111a);
+  color: #e8f4ff;
+}
+
+.dark {
+  background: linear-gradient(135deg, #ffffff, #e6f2ff);
+  color: #111;
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 18px rgba(0,255,255,0.2);
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  color: #00eaff;
+  text-shadow: 0 0 12px rgba(0,255,255,0.9);
+}
+
+.secondary-btn, .danger-btn, button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(0,255,255,0.2);
+  border: 1px solid rgba(0,255,255,0.4);
+  color: #e8f4ff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.secondary-btn:hover,
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px cyan;
+}
+
+.danger-btn {
+  background: rgba(255, 68, 68, 0.2);
+  border-color: rgba(255,68,68,0.4);
+}
+
+.danger-btn:hover {
+  box-shadow: 0 0 12px red;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.15);
+}
+
+/* ---------- SUMMARY CARDS ---------- */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+  margin: 12px 0 20px;
+}
+
+.summary-item {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(0,255,255,0.08);
+  border: 1px solid rgba(0,255,255,0.22);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.summary-item strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 20px;
+  color: #00f7ff;
+}
+
+/* ---------- FORM ---------- */
+.form-row {
+  margin-bottom: 12px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  color: #e8f4ff;
+}
+
+input:focus {
+  outline: none;
+  border-color: cyan;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* ---------- TABLE ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+th {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ---------- CHARTS SECTION ---------- */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+}
+
+.chart-card {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- LIGHT MODE FIXES ---------- */
+.dark header,
+.dark .card,
+.dark .chart-card,
+.dark .summary-item {
+  background: #ffffffb8;
+  color: #000;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+.dark input {
+  background: #ffffff;
+  color: black;
+}
+/* THEME BUTTON STYLE */
+.theme-btn {
+  padding: 8px 14px;
+  background: #2f80ed;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.theme-btn:hover {
+  opacity: 0.85;
+}
+
+/* ===============================
+   DARK MODE THEME
+================================ */
+.dark-mode {
+  background: #0c0f1a !important;
+  color: #e9efff !important;
+}
+
+/* Cards */
+.dark-mode .card {
+  background: rgba(255,255,255,0.06) !important;
+  color: #e9efff !important;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Header */
+.dark-mode header {
+  color: #e9efff !important;
+}
+
+/* Inputs */
+.dark-mode input {
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+/* Table */
+.dark-mode table {
+  color: #e9efff !important;
+}
+.dark-mode table th {
+  background: rgba(255,255,255,0.12) !important;
+}
+.dark-mode table td {
+  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+}
+
+/* Chart cards */
+.dark-mode .chart-card {
+  background: rgba(255,255,255,0.08) !important;
+  border-radius: 10px;
+  padding: 15px;
+}
+
